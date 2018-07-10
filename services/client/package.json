@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "eslint": "^5.1.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
@@ -12,7 +13,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "pretty": "prettier --semi false --print-width 100 single-quote --trailing-comma all --write \"src/**/*.js\"",
-    "test": "react-scripts test --env=jsdom --setupFiles='./src/tests/setupTest.js'",
+    "test": "CI=true react-scripts test --watch --env=jsdom --setupFiles='./src/tests/setupTest.js'",
     "test:coverage": "react-scripts test --coverage --env=jsdom --setupFiles='./src/tests/setupTest.js'",
     "eject": "react-scripts eject"
   },
@@ -21,14 +22,11 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
-    "eslint": "^5.0.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.0",
     "eslint-plugin-prettier": "^2.6.2",
-    "jest": "^23.3.0",
-    "jest-cli": "^23.3.0",
     "prettier": "^1.13.7"
   },
   "jest": {
