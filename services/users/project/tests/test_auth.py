@@ -7,6 +7,8 @@ from project.tests.base import BaseTestCase
 from project.tests.utils import add_user
 from project import db
 from project.api.models import User
+
+
 class TestAuthBlueprint(BaseTestCase):
 
     def test_user_registration(self):
@@ -236,7 +238,8 @@ class TestAuthBlueprint(BaseTestCase):
             self.assertTrue(data['data'] is not None)
             self.assertTrue(data['data']['username'] == 'test')
             self.assertTrue(data['data']['email'] == 'test@test.com')
-            self.assertTrue(data['data']['active'] is True)
+            self.assertTrue(data['data']['active'])
+            self.assertFalse(data['data']['admin'])
             self.assertEqual(response.status_code, 200)
 
     def test_invalid_status(self):
@@ -302,4 +305,3 @@ class TestAuthBlueprint(BaseTestCase):
             self.assertTrue(data['status'] == 'fail')
             self.assertTrue(data['message'] == 'Provide a valid auth token.')
             self.assertEqual(response.status_code, 401)
-

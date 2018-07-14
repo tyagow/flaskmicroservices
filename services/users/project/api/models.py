@@ -16,7 +16,7 @@ class User(db.Model):
     active = db.Column(db.Boolean, default=True, nullable=False)
     admin = db.Column(db.Boolean, default=False, nullable=False)
 
-    def __init__(self, username: str, email: str, password, admin: bool = False):
+    def __init__(self, username: str, email: str, password, admin: bool=False):
         self.username = username
         self.email = email
         self.password = bcrypt.generate_password_hash(
@@ -29,7 +29,8 @@ class User(db.Model):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'active': self.active
+            'active': self.active,
+            'admin': self.admin
         }
 
     def encode_auth_token(self, user_id):
