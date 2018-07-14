@@ -21,3 +21,9 @@ run users python manage.py db migrate
 sudo docker-compose -f docker-compose-dev.yml \
 run users python manage.py db migrate
 ```
+
+#### Client
+
+```shell
+sudo docker-compose -f docker-compose-dev.yml run client npm test -- --verbose
+```
