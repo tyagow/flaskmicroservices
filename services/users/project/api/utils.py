@@ -7,7 +7,6 @@ from project.api.models import User
 def authenticate(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        print(args, kwargs)
         response_object = {
             'status': 'fail',
             'message': 'Provide a valid auth token.'
@@ -25,3 +24,8 @@ def authenticate(f):
             return jsonify(response_object), 401
         return f(resp, *args, **kwargs)
     return decorated_function
+
+
+def is_admin(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    return user.admin
