@@ -4,10 +4,7 @@ class Logout extends Component {
   componentDidMount() {
     this.props.logoutUser();
   }
-  logoutUser = () => {
-    window.localStorage.clear();
-    this.setState({ isAuthenticated: false });
-  };
+
   render() {
     return (
       <div>
