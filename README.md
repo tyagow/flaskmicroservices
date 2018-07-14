@@ -7,6 +7,17 @@
 ```shell
 $ sudo docker-compose -f docker-compose-dev.yml up -d --build 
 $ sudo docker-compose -f docker-compose-dev.yml run users python manage.py recreate_db
-$ docker-compose -f docker-compose-dev.yml run users python manage.py seed_db
-$ docker-compose -f docker-compose-dev.yml run users python manage.py test
+$ sudo docker-compose -f docker-compose-dev.yml run users python manage.py seed_db
+$ sudo docker-compose -f docker-compose-dev.yml run users python manage.py test
+```
+
+## Shortcuts
+
+#### Database
+
+```shell
+sudo docker-compose -f docker-compose-dev.yml \
+run users python manage.py db migrate
+sudo docker-compose -f docker-compose-dev.yml \
+run users python manage.py db migrate
 ```
