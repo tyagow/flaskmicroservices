@@ -13,6 +13,14 @@ $ sudo docker-compose -f docker-compose-dev.yml run users python manage.py test
 
 ## Shortcuts
 
+#### Testing
+
+```shell
+sudo docker-compose -f docker-compose-dev.yml run users flake8 project
+sudo docker-compose -f docker-compose-dev.yml run client npm run test:coverage -- --verborse
+
+```
+
 #### Database
 
 ```shell
