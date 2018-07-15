@@ -2,7 +2,6 @@
 env=$1
 file=""
 fails=""
-
 if [[ "${env}" == "stage" ]]; then
   file="docker-compose-dev.yml"
 elif [[ "${env}" == "dev" ]]; then
@@ -26,6 +25,11 @@ inspect $? users-lint
 if [[ "${env}" == "dev" ]]; then
   sudo docker-compose -f $file run client npm run test:coverage
   inspect $? client
+  testcafe 'chrome --no-sandbox' e2e
+  inspect $? e2e
+else
+  testcafe 'chrome --no-sandbox' e2e/index.test.js
+  inspect $? e2e
 fi
 if [ -n "${fails}" ]; then
   echo "Tests failed: ${fails}"
