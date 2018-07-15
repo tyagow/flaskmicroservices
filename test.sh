@@ -25,7 +25,7 @@ inspect $? users-lint
 if [[ "${env}" == "dev" ]]; then
   sudo docker-compose -f $file run client npm run test:coverage
   inspect $? client
-  testcafe 'chrome --no-sandbox' e2e
+  testcafe chrome e2e
   inspect $? e2e
 else
   testcafe 'chrome --no-sandbox' e2e/index.test.js
