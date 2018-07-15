@@ -19,12 +19,12 @@ inspect() {
     fails="${fails} $2"
   fi
 }
-docker-compose -f $file run users python manage.py test
+sudo docker-compose -f $file run users python manage.py test
 inspect $? users
-docker-compose -f $file run users flake8 project
+sudo docker-compose -f $file run users flake8 project
 inspect $? users-lint
 if [[ "${env}" == "dev" ]]; then
-  docker-compose -f $file run client npm test -- --coverage
+  sudo docker-compose -f $file run client npm run test:coverage
   inspect $? client
 fi
 if [ -n "${fails}" ]; then
